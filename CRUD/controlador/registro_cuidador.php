@@ -1,12 +1,17 @@
 <?php
 if(!empty($_POST["btnregistrar"])){
-    if(!empty($_POST["nombreC"]) && !empty($_POST["rfcC"]) && !empty($_POST["tipoCuidador"])){
+    if(!empty($_POST["nombreC"]) && !empty($_POST["rfcC"]) && !empty($_POST["tipoCuidador"]) && !empty($_POST["apellidoPC"]) && !empty($_POST["apellidoMC"]) && !empty($_POST["telefonoC"]) && !empty($_POST["emailC"]) && !empty($_POST["horarioC"]) && !empty($_POST["nominaC"])){
         $nombre = $_POST["nombreC"];
+        $apellidoP = $_POST["apellidoPC"];
+        $apellidoM = $_POST["apellidoMC"];
+        $tipo_cuidador = $_POST["tipoCuidador"];
+        $telefono = $_POST["telefonoC"];
+        $email = $_POST["emailC"];
+        $horario = $_POST["horarioC"];
         $rfc = $_POST["rfcC"];
-        $tipoCuidador = $_POST["tipoCuidador"];
+        $nomina = $_POST["nominaC"];
 
-        // Realiza la inserción en la base de datos
-        $sql = $conexion->query("INSERT INTO cuidadores (nombre, rfc, tipo_cuidador) VALUES ('$nombre', '$rfc', '$tipoCuidador')");
+        $sql = $conexion->query("INSERT INTO tbl_cuidadores (nombre, apellidoP, apellidoM, tipo_cuidador, telefono, email, horario, rfc, nomina) VALUES ('$nombre', '$apellidoP', '$apellidoM', '$tipo_cuidador', '$telefono', '$email', '$horario', '$rfc', '$nomina')");
 
         if($sql){
             echo "ÉXITO";
