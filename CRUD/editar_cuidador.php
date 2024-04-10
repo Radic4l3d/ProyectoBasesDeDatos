@@ -1,9 +1,8 @@
 <?php
 include "modelo/conexion.php";
-$id = $_GET["id"];
+$ID = $_GET["id"];
 
-$sql = $conexion->query("SELECT * FROM cuidadores WHERE id=$id ");
-     
+$sql = $conexion->query("SELECT * FROM tbl_empresas WHERE id=$ID ");
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +28,12 @@ $sql = $conexion->query("SELECT * FROM cuidadores WHERE id=$id ");
                 <input type="text" class="form-control" name="nombreC" value="<?= $datos->nombre ?>">
             </div>
             <div class="mb-3">
-                <label for="rfcC" class="form-label">RFC</label>
-                <input type="text" class="form-control" name="rfcC" value="<?= $datos->rfc ?>">
+                <label for="apellidoPC" class="form-label">Apellido Paterno</label>
+                <input type="text" class="form-control" name="apellidoPC" value="<?= $datos->apellidoP ?>">
+            </div>
+            <div class="mb-3">
+                <label for="apellidoMC" class="form-label">Apellido Materno</label>
+                <input type="text" class="form-control" name="apellidoMC" value="<?= $datos->apellidoM ?>">
             </div>
             <div class="mb-3">
                 <label for="tipoCuidador" class="form-label">Tipo de Cuidador</label>
@@ -39,10 +42,36 @@ $sql = $conexion->query("SELECT * FROM cuidadores WHERE id=$id ");
                     <option value="Niños" <?= ($datos->tipo_cuidador == 'Niños') ? 'selected' : '' ?>>Niños</option>
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="telefonoC" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" name="telefonoC" value="<?= $datos->telefono ?>">
+            </div>
+            <div class="mb-3">
+                <label for="emailC" class="form-label">Email</label>
+                <input type="email" class="form-control" name="emailC" value="<?= $datos->email ?>">
+            </div>
+
+            <div class="mb-3">
+                <label for="tipoCuidador" class="form-label">Horario</label>
+                <select class="form-select" name="horarioC">
+                    <option value="Matutino" <?= ($datos->horario == 'Matutino') ? 'selected' : '' ?>>Matutino</option>
+                    <option value="Vespertino" <?= ($datos->horario == 'Vespertino') ? 'selected' : '' ?>>Vespertino</option>
+                    <option value="Nocturno" <?= ($datos->horario == 'Nocturno') ? 'selected' : '' ?>>Nocturno</option>
+                </select>
+            </div>            
+            <div class="mb-3">
+                <label for="rfcC" class="form-label">RFC</label>
+                <input type="text" class="form-control" name="rfcC" value="<?= $datos->rfc ?>">
+            </div>
+            <div class="mb-3">
+                <label for="nominaC" class="form-label">Nómina</label>
+                <input type="text" class="form-control" name="nominaC" value="<?= $datos->nomina ?>">
+            </div>
         <?php } ?>
 
         <button type="submit" class="btn btn-primary" name="btnEditar" value="ok">Enviar datos</button>
     </form>
 </body>
 </html>
+
 
